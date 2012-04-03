@@ -18,90 +18,88 @@ header that is used to to that
 
 ##The java sourcecode:
 {% highlight java %}
-/**
- *
- * @author Filippo De Luca
- *
- * @version $Id$
- */
-public class MethodOverrideFilter implements Filter {
 
-  public static final String HEADER_PARAM = "methodOverrideHeader";
+	/**
+	 *
+	 * @author Filippo De Luca
+	 *
+	 * @version $Id$
+	 */
+	public class MethodOverrideFilter implements Filter {
+	
+		public static final String HEADER_PARAM = "methodOverrideHeader";
+		
+		public static final String DEFAULT_HEADER = "X-HTTP-Method-Override";
+		
+		private String header = DEFAULT_HEADER;
+		
+		public void init(FilterConfig filterConfig) throws ServletException {
+		
+		    header = filterConfig.getInitParameter(HEADER_PARAM);
+		    if(StringUtils.isBlank(header)) {
+		      header = DEFAULT_HEADER;
+		    }
+		
+		}
+		
+		public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+			ServletRequest filteredRequest = request;
+			
+			if(request instanceof HttpServletRequest) {
+			
+			  HttpServletRequest httpRequest = (HttpServletRequest)request;
+			  filteredRequest = new MethodOverrideHttpServletRequestDecorator(
+				httpRequest, 
+				header
+			  );
+			}
+			
+			chain.doFilter(filteredRequest, response);
+		}
+	
+		public void destroy() {
+			// Empty
+		}
+	
+		private class MethodOverrideHttpServletRequestDecorator extends HttpServletRequestWrapper {
+		
+			public static final String DEFAULT_HEADER = "X-HTTP-Method-Override";
+			
+			private final String methodOverrideHeader;
+			
+			private transient String method;
+			
+			public MethodOverrideHttpServletRequestDecorator(HttpServletRequest request, String methodOverrideHeader) {
+				super(request);
+				this.methodOverrideHeader = methodOverrideHeader;
+			}
+			
+			@Override
+			public String getMethod() {
+			
+				if(method==null) {
+					method = resolveMethod();
+				}
+				
+				return method;
+			}
+			
+			protected String resolveMethod() {
+			
+				String headerValue = getHeader(methodOverrideHeader);
+				
+				if(headerValue!=null) {
+					return headerValue;
+				}
+				else {
+					return super.getMethod();
+				}
+			}
+		
+		}
+	}
 
-  public static final String DEFAULT_HEADER = "X-HTTP-Method-Override";
-
-  private String header = DEFAULT_HEADER;
-
-  public void init(FilterConfig filterConfig) throws ServletException {
-
-    header = filterConfig.getInitParameter(HEADER_PARAM);
-    if(StringUtils.isBlank(header)) {
-      header = DEFAULT_HEADER;
-    }
-
-  }
-
-  public void doFilter(ServletRequest request, ServletResponse response,
-          FilterChain chain) throws IOException, ServletException {
-
-    ServletRequest filteredRequest = request;
-
-    if(request instanceof HttpServletRequest) {
-
-      HttpServletRequest httpRequest = (HttpServletRequest)request;
-      filteredRequest = new MethodOverrideHttpServletRequestDecorator(
-		httpRequest, 
-		header
-      );
-    }
-
-    chain.doFilter(filteredRequest, response);
-  }
-
-  public void destroy() {
-    // Empty
-  }
-
-  private class MethodOverrideHttpServletRequestDecorator 
-          extends HttpServletRequestWrapper {
-
-    public static final String DEFAULT_HEADER = "X-HTTP-Method-Override";
-
-    private final String methodOverrideHeader;
-
-    private transient String method;
-
-    public MethodOverrideHttpServletRequestDecorator(
-            HttpServletRequest request, 
-            String methodOverrideHeader) {
-      super(request);
-      this.methodOverrideHeader = methodOverrideHeader;
-    }
-
-    @Override
-    public String getMethod() {
-
-      if(method==null) {
-          method = resolveMethod();
-      }
-
-      return method;
-    }
-
-    protected String resolveMethod() {
-
-      String headerValue = getHeader(methodOverrideHeader);
-
-      if(headerValue!=null) {
-          return headerValue;
-      }
-      else {
-          return super.getMethod();
-      }
-    }
-
-  }
-}
 {% endhighlight %}
 
 The source is hosted at [this gist](https://gist.github.com/923414).
