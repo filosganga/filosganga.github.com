@@ -5,34 +5,34 @@ category : programming
 tags : [java, GWT, best-practices]
 ---
 {% include JB/setup %}
-The Google Web Toolkit (GWT) allows you write plain java code, to be translated
-in client-side javascript code. Permit you to reuse your domain objects in the 
-client side. This promise is very amazing, but it isn't the whole true, using 
+The Google Web Toolkit (GWT) allows you write plain java code, and then to translate it 
+to client-side javascript code. Therefore it permits you to reuse your domain objects in the 
+client side. This promise is amazing, but it isn't the whole true: using 
 GWT without be aware of the transformation can produce a poor performance and, 
 worst, unmaintainable project with disastrous results for your business.
 
-I would like to spend some time to write few posts about the best practices I 
+I would like to spend some time to write a post about the best practices I 
 have learnt using GWT and which common pitfalls to avoid.
 
-When I have started to use GWT the first problem I have encountered is the 
-development of the RPC Service:
+When I have started to use GWT, the first problem I encountered was the 
+development of the RPC services:
  
-1. They need to have two interfaces.
-2. They should be plain java Servlet.
-3. The serialization of objects is a pain.
+1. They need two interfaces.
+2. They should be implemented by java Servlet.
+3. The serialization of objects is a difficult to manage.
 4. Their interface should not follow the java common best practices. 
 
-About the `1` it is solvable using the `maven-gwt-plugin`, it will generate the 
-Async interface (It doesn't work well with generics actually) for you as well 
-the Servlet mapping on the `web.xml` descriptor.
+The 1st point is solvable using the `maven-gwt-plugin`: this will generate the 
+Async interface as well the Servlet mapping on the `web.xml` descriptor 
+(it doesn't work well with generics actually).
 
-The drawbacks of the `2` instead is that if you are using Spring, the Servlet 
-are instantiated outside the Spring context you cannot apply any aspect on them.
-(can not be transaction for example). If you want the GWT service to be live 
-inside Spring you need to create two instance for the same interface:
+The drawbacks of the 2nd point instead is that if you are using Spring, the Servlet 
+are instantiated outside the Spring context; you cannot apply any aspect on them.
+(e.g. they can't be transactional). If you want the GWT service to be managed  
+by the Spring context, you need to create two instances of the same interface:
 
 * A Spring bean
-* A Servlet delegating all method to the Spring bean.
+* A Servlet that delegates all method implementations to the Spring bean.
 
 This is a possible implementation of that:
 {% highlight java %}
@@ -95,10 +95,10 @@ public abstract class GWTRemoteServiceServlet extends RemoteServiceServlet {
 }
 {% endhighlight %}
 
-So if we have a GWT service interface to implement, we have to extend 
-{{GWTService}} and implement our interface. Then put this implementation in the
-Spring context. We have then to create our Servlet extending {{GWTRemoteServiceServlet}}
-implementing the same interface and delegating all method to the Spring bean.
+So if we need to implement a GWT service interface, we have to extend 
+{{GWTService}} and implement our interface. Then we have to write our Servlet 
+that extends {{GWTRemoteServiceServlet}} and implements the same interface, delegating 
+all method implementations to the Spring bean.
 
 This is the example for a {{ContactService}} interface:
 {% highlight java %}
