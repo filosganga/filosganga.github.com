@@ -6,12 +6,12 @@ tags : [java, GWT, best-practices]
 ---
 {% include JB/setup %}
 The Google Web Toolkit (GWT) allows you write plain java code, to be translated
-in client-side javascript code. This promise is very amazing, but it isn't the 
-whole true, using GWT without be aware of the transformation can produce a poor
-performance and, worst, unmaintainable project with disastrous results for your 
-business.
+in client-side javascript code. Permit you to reuse your domain objects in the 
+client side. This promise is very amazing, but it isn't the whole true, using 
+GWT without be aware of the transformation can produce a poor performance and, 
+worst, unmaintainable project with disastrous results for your business.
 
-I would like to spend some time to write few posts a bout the best practices I 
+I would like to spend some time to write few posts about the best practices I 
 have learnt using GWT and which common pitfalls to avoid.
 
 When I have started to use GWT the first problem I have encountered is the 
