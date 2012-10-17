@@ -3,6 +3,7 @@ layout: page
 title: "About me"
 description: ""
 tags: ["me", "WURFL", "Moreover"]
+group: navigation
 ---
 {% include JB/setup %}
 Welcome,

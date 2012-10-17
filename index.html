@@ -2,13 +2,17 @@
 layout: default
 title: Home
 ---
-<h1>Latest entries</h1>
 {% for post in site.posts limit:4 %}
-<h2>
+<div class="post">
+<h2 class="title">
     <a href="{{ post.url }}" rel="bookmark" title="Permanent link to ">{{ post.title }}</a>
 </h2>
-<span>{{ post.date | date: '%B' }} {{ post.date | date: '%e' }}, {{ post.date | date: '%Y' }}</span>
+<div class="publishing">
+	<i class="icon-time"></i>
+	<span class="date">{{ post.date | date: '%B' }} {{ post.date | date: '%e' }}, {{ post.date | date: '%Y' }}</span>
+</div>
 <p>
     {{ post.content}}
 </p>
+</div>
 {% endfor %}

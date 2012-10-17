@@ -1,11 +1,31 @@
 <div class="page-header">
   <h1>{{ page.title }}</h1>
 </div>
-
-<div class="row">
-  <div class="span8">
+	
+<div class="row-fluid">
+  <div class="span12">
     {{ content }}
-    <hr>
+
+  <p class="publishing">
+	Published
+	<span class="author">by&nbsp;<a href="https://plus.google.com/u/0/111245912460650017340?rel=author">Filippo De Luca</a></span>
+	on
+	<span class="date">{{ page.date | date_to_long_string }}</span>
+  </p>
+
+  {% unless page.tags == empty %}
+  <div class="tags">  
+    <ul class="tag_box inline">
+    {% assign tags_list = page.tags %}
+    {% include JB/tags_list %}
+    </ul>
+  </div>
+	{% endunless %}  
+	
+	{% include JB/sharing %}
+	
+	<hr>
+
     <div class="pagination">
       <ul>
       {% if page.previous %}
@@ -21,20 +41,9 @@
       {% endif %}
       </ul>
     </div>
+
     <hr>
     {% include JB/comments %}
   </div>
   
-  <div class="span4">
-    <h4>Published</h4>
-    <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
-
-  {% unless page.tags == empty %}
-    <h4>Tags</h4>
-    <ul class="tag_box">
-    {% assign tags_list = page.tags %}
-    {% include JB/tags_list %}
-    </ul>
-  {% endunless %}  
-  </div>
 </div>
