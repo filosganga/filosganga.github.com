@@ -23,9 +23,9 @@
 
     <div id="main-navbar" class="navbar navbar-inverse navbar-fixed-top">
       	<div class="navbar-inner">
-        	<div class="container-fuid">
-				<div class="row-fluid">
-          			<a class="brand offset1" href="{{ HOME_PATH }}">{{ site.title }}</a>
+        	<div class="container">
+				<div class="row">
+          			<a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
           			<ul class="nav pull-right">
             			{% assign pages_list = site.pages %}
             			{% assign group = 'navigation' %}
@@ -36,22 +36,22 @@
 		</div>
     </div>
 
-    <div id="main-container" class="container-fluid">
+    <div id="main-container" class="container">
 
-	  	<div class="row-fluid">
-			<div class="content span7 offset1">
+	  	<div class="row">
+			<div class="content span8">
 				{{ content }}
 			</div>
 
-			<div class="sidebar span3">
+			<div class="sidebar span2">
 				<div class="profile"> 
 					<img class="avatar" src="http://www.gravatar.com/avatar/935ffe39f9c3e3bf45d50203bd3e70d8.png?s=280"/> 
 									
 					<a href="http://about.me/FilippoDeLuca" class="about-me">about.me</a>				
 									
 					<!-- AddThis Follow BEGIN -->
-					<div class="addthis_toolbox addthis_32x32_style addthis_default_style">
-					<p class=".hidden-tablet .hidden-phone">Follow Me</p>
+					<div class="addthis_toolbox addthis_24x24_style addthis_default_style">
+					<p>Follow me on</p>
 					<a class="addthis_button_facebook_follow" addthis:userid="filosganga"></a>
 					<a class="addthis_button_twitter_follow" addthis:userid="FilippoDeLuca"></a>
 					<a class="addthis_button_linkedin_follow" addthis:userid="filippodeluca"></a>

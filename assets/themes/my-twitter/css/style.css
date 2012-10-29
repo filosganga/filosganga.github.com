@@ -1,6 +1,6 @@
 /* Override some defaults */
 html, body {
-  background-color: #fff;
+  background-color: #efefef;
 }
 
 #main-navbar .nav {
@@ -8,7 +8,8 @@ html, body {
 }
 
 #main-container {
-   margin-top: 42px;
+   margin-top: 41px;
+   background-color: #ffffff;
 }
 
 #main-container > footer {
@@ -21,8 +22,7 @@ html, body {
 
 #main-container .sidebar {
   color: #777;
-  /* background-color: #fff; */
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQALv3r37zwjjgzhCQkKMYAEYB8RmROaABAAS4A/OBaAi1gAAAABJRU5ErkJggg==) repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2NkQALv3r37zwjjgzhCQkKMYAEYB8RmROaABAAS4A/OBaAi1gAAAABJRU5ErkJggg==) repeat #dddddd;
   padding: 20px;
   margin-top: 86px;
   border-radius: 5px;
@@ -49,15 +49,12 @@ html, body {
    border: 1px solid #E8E8E8;  
 }
 
-#main-container .sidebar .profile .addthis_toolbox p {
-   display: inline-block;
-   float: left;
-   margin-top: 6px;
-   margin-right: 16px;
-}
-
 #main-container .sidebar .profile .addthis_toolbox a+a {
    margin-left: 8px;   
+}
+
+#main-container .sidebar .profile .addthis_toolbox p {
+   text-align: left;
 }
 
 #main-container .sidebar .profile img {
