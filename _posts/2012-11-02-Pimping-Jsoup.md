@@ -102,4 +102,6 @@ class RichElements(target: Elements) extends Iterable[Element] {
 }
 {% endhighlight %}
 
+The code has been upload to github [SSoup](https://github.com/filosganga/ssoup) reporitory. 
+
 Happy coding!
