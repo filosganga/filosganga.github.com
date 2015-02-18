@@ -2,7 +2,7 @@
 layout: post
 title :  Pimping JSoup
 category : programming
-tags : [Scala, Pattern]
+tags : [scala, pattern, jsoup, pimp-my-library]
 ---
 {% include JB/setup %}
 I started to develop a web crawler part of a bigger project, then I have to 

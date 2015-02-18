@@ -2,7 +2,7 @@
 layout: post
 title :  GWT RPC Best Practices
 category : programming
-tags : [java, GWT, best-practices]
+tags : [java, gwt, best-practices]
 ---
 {% include JB/setup %}
 The Google Web Toolkit (GWT) allows you write plain java code, and then to translate it 

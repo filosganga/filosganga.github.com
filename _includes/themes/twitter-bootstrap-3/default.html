@@ -8,10 +8,10 @@
     <meta name="google-site-verification" content="pH8mtb3gMqDajjdiEN7k15Ea2R08IUXfJO3oruJr9O0" />
     
     {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
-    <meta name="author" content="{{site.author.name}}">
+    <meta name="author" content="{{ site.author.name }}">
 		<meta property="og:image" content="http://www.gravatar.com/avatar/935ffe39f9c3e3bf45d50203bd3e70d8.png" />
 	
-	  <title>{{page.title}} | {{site.author.name}}</title>
+	  <title>{{ page.title }}</title>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +27,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-    <link rel="stylesheet" href="{{site.url}}/css/style.css">
+    <link rel="stylesheet" href="{{ ASSET_PATH }}/css/style.css">
 
   </head>
   <body>
@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{site.url}}">{{site.title}}</a>
+          <a class="navbar-brand" href="#">{{ site.title }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -85,9 +85,9 @@
             <div class="list-group">
               {% for post in site.posts %}
               {% if page.url == post.url %}
-              <a href="{{site.url}}{{post.url}}" class="list-group-item active">{{post.title}}</a>
+              <a href="{{ BASE_PATH }}{{post.url}}" class="list-group-item active">{{post.title}}</a>
               {% else %}
-              <a href="{{site.url}}{{post.url}}" class="list-group-item">{{post.title}}</a>
+              <a href="{{ BASE_PATH }}{{post.url}}" class="list-group-item">{{post.title}}</a>
               {% endif %}
               {% endfor %}
             </div>
@@ -99,11 +99,11 @@
             <div class="list-group">
               {% for post in site.related_posts limit:4 %}
               {% if page.url == post.url %}
-              <a href="{{site.url}}{{post.url}}" class="list-group-item active">
+              <a href="{{ BASE_PATH }}{{post.url}}" class="list-group-item active">
                 <span class="date">{{ post.date | date: "%e %b %Y" }}</span>{{post.title}}
               </a>
               {% else %}
-              <a href="{{site.url}}{{post.url}}" class="list-group-item">
+              <a href="{{ BASE_PATH }}{{post.url}}" class="list-group-item">
                 <span class="date">{{ post.date | date: "%e %b %Y" }}</span>{{post.title}}
               </a>
               {% endif %}
@@ -124,7 +124,7 @@
 
     </div> <!-- /container -->
 
-    <a href="http://github.com/{{site.author.github}}">
+    <a href="http://github.com/{{ site.author.github }}">
     	<img style="position: fixed; top: 0; right: 0; border: 0; z-index: 9000;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
     </a>
         

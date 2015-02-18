@@ -1,7 +1,7 @@
 ---
 layout: post
-category : utilities
-tags : [java, REST, filter]
+category : programming
+tags : [java, rest]
 ---
 {% include JB/setup %}
 The actual trend of developing application based on REST service can find an obstacle in the proxy and firewall 

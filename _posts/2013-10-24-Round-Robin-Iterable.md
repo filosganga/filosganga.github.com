@@ -2,7 +2,7 @@
 layout: post
 title :  Round-Robin Iterable
 category : programming
-tags : [Java, Pattern, Guava]
+tags : [java, guava, iterator, round-robin]
 ---
 {% include JB/setup %}
 It is a solution I have written because my collegue was struggling to write a 
