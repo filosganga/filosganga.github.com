@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/filippodeluca
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://filippodeluca.com
+  * I am filippodeluca (https://keybase.io/filippodeluca) on keybase.
+  * I have a public key ASC15nUa_a2CLHbteLCqNLcJOdILRNSHq5YRpdaV2xplzAo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120b5e6751afdad822c76ed78b0aa34b70939d20b44d487ab9611a5d695db1a65cc0a",
+            "host": "keybase.io",
+            "kid": "0120b5e6751afdad822c76ed78b0aa34b70939d20b44d487ab9611a5d695db1a65cc0a",
+            "uid": "4ded1500f87aaf1408f9cd9fc0273e19",
+            "username": "filippodeluca"
+        },
+        "service": {
+            "hostname": "filippodeluca.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.9"
+    },
+    "ctime": 1455973660,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1455973593,
+        "hash": "30a72c222162e60f668ac4631e7edfa06e75ef467abd346fd7e72c88d0052898fb033f3bffcbd9fc0dea14986643f060dcee903bea104dfe1d409abd90749f0d",
+        "seqno": 390553
+    },
+    "prev": "da61fedeb7bf763a10628cead082a396371c30f67b8aec131782c65808e96ca5",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+g6Rib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgteZ1Gv2tgix27XiwqjS3CTnSC0TUh6uWEaXWldsaZcwKp3BheWxvYWTFAvx7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwYjVlNjc1MWFmZGFkODIyYzc2ZWQ3OGIwYWEzNGI3MDkzOWQyMGI0NGQ0ODdhYjk2MTFhNWQ2OTVkYjFhNjVjYzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYjVlNjc1MWFmZGFkODIyYzc2ZWQ3OGIwYWEzNGI3MDkzOWQyMGI0NGQ0ODdhYjk2MTFhNWQ2OTVkYjFhNjVjYzBhIiwidWlkIjoiNGRlZDE1MDBmODdhYWYxNDA4ZjljZDlmYzAyNzNlMTkiLCJ1c2VybmFtZSI6ImZpbGlwcG9kZWx1Y2EifSwic2VydmljZSI6eyJob3N0bmFtZSI6ImZpbGlwcG9kZWx1Y2EuY29tIiwicHJvdG9jb2wiOiJodHRwOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC45In0sImN0aW1lIjoxNDU1OTczNjYwLCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0NTU5NzM1OTMsImhhc2giOiIzMGE3MmMyMjIxNjJlNjBmNjY4YWM0NjMxZTdlZGZhMDZlNzVlZjQ2N2FiZDM0NmZkN2U3MmM4OGQwMDUyODk4ZmIwMzNmM2JmZmNiZDlmYzBkZWExNDk4NjY0M2YwNjBkY2VlOTAzYmVhMTA0ZGZlMWQ0MDlhYmQ5MDc0OWYwZCIsInNlcW5vIjozOTA1NTN9LCJwcmV2IjoiZGE2MWZlZGViN2JmNzYzYTEwNjI4Y2VhZDA4MmEzOTYzNzFjMzBmNjdiOGFlYzEzMTc4MmM2NTgwOGU5NmNhNSIsInNlcW5vIjo3LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQBhHYh1Ih3yGBMPS9RgGMHU6i2gqDI/STJHUL39AAG7bt9fEXZBoL6RrwewhOPrM/xQz8eWnohIiM53EQMMLFwGoc2lnX3R5cGUgo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/filippodeluca
+
+==================================================================
