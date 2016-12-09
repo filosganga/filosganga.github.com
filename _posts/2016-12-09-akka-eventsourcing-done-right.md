@@ -1,6 +1,6 @@
 ---
 layout: post
-title :  Akka event sourcing done well
+title :  Akka event sourcing done right
 category : programming
 tags : [Scala, Akka, Event Sourcing]
 ---
