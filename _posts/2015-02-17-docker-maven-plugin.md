@@ -1,10 +1,9 @@
 ---
-layout: post
+layout: single
 title :  Docker maven plugin
 category : programming
-tags : [Java, Maven, Docker]
+tags : [java, docker]
 ---
-{% include JB/setup %}
 As Docker is gathering more interest from the big IT companies, it seems to be a perfect way to 
 delivery the applications to the production environemnt. If until now the maven artifct was the 
 jar or war, now it looks natural the artifact should be the docker image. In fact this strategy

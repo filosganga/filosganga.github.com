@@ -1,9 +1,8 @@
 ---
-layout: post
+layout: single
 category : programming
 tags : [java, rest]
 ---
-{% include JB/setup %}
 The actual trend of developing application based on REST service can find an obstacle in the proxy and firewall 
 configurations. Most of these drops requests other than GET and POST. The best practices of REST API design involve 
 the use of all HTTP method to describe the action, rather than changing the URI. The URI should identify the 

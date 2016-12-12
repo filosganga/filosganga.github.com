@@ -1,22 +1,4 @@
 ---
-layout: default
-title: Home
+layout: home
+author_profile: true
 ---
-{% for post in site.posts limit:4 %}
-
-<div itemscope itemtype="http://schema.org/Article" class="post">
-<h2 class="title">
-    <a itemprop="url" href="{{ post.url }}" rel="bookmark" title="Permanent link to ">
-    	<span itemprop="name">{{ post.title }}</span>
-    </a>
-</h2>
-<div class="publishing">
-	<i class="icon-time"></i>
-	<span itemprop="datePublished" content="{{ post.date | date: '%Y-%m-%d' }}" class="date">{{ post.date | date: '%B' }} {{ post.date | date: '%e' }}, {{ post.date | date: '%Y' }}</span>
-	<span itemprop="author" itemscope itemtype="http://schema.org/Person" class="author">by&nbsp;<a itemprop="name" href="https://plus.google.com/+FilippoDeLuca?rel=author">Filippo De Luca</a></span>
-</div>
-<p itemprop="articleBody">
-    {{ post.content}}
-</p>
-</div>
-{% endfor %}

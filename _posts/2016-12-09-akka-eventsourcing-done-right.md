@@ -1,10 +1,9 @@
 ---
-layout: post
+layout: single
 title :  Akka event sourcing done right
 category : programming
-tags : [Scala, Akka, Event Sourcing]
+tags : [scala, akka, event sourcing]
 ---
-{% include JB/setup %}
 At the end of the past summer, I have been captured by a very interesting discussion about `Commands` and `Events` between Viktor Klang and Martin Thompson:
 
 {% include 2016-12-09-akka-eventsourcing-done-well-files/mjpt77-tweet.html %}

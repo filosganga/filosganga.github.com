@@ -1,10 +1,9 @@
 ---
-layout: post
+layout: single
 title :  Pimping JSoup
 category : programming
-tags : [scala, pattern, jsoup, pimp-my-library]
+tags : [scala, jsoup]
 ---
-{% include JB/setup %}
 I started to develop a web crawler part of a bigger project, then I have to 
 choice what kind of HTML parser library I have to use. I have used NekoHTML
 in the past and it was pretty good but it doesn't have any helper to select
