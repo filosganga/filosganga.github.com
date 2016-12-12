@@ -1,10 +1,9 @@
 ---
-layout: post
+layout: single
 title :  Round-Robin Iterable
 category : programming
-tags : [java, guava, iterator, round-robin]
+tags : [java]
 ---
-{% include JB/setup %}
 It is a solution I have written because my collegue was struggling to write a 
 code that was collecting one element for each list in an ordered way and 
 accepting list of different size.

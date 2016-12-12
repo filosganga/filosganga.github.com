@@ -1,10 +1,9 @@
 ---
-layout: post
+layout: single
 title :  GWT RPC Best Practices
 category : programming
 tags : [java, gwt, best-practices]
 ---
-{% include JB/setup %}
 The Google Web Toolkit (GWT) allows you write plain java code, and then to translate it 
 to client-side javascript code. Therefore it permits you to reuse your domain objects in the 
 client side. This promise is amazing, but it isn't the whole true: using 
