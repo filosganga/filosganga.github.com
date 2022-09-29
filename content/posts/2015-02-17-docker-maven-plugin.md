@@ -111,7 +111,7 @@ now we can decide if we want to push on a remote docker registry. To push to a r
 we need actually to rename the image, because we need to add the namespace in front of it. So 
 we are going to reuse the `tag` goal again:
 
-```
+```xml
 <execution>
     <id>push-docker-image</id>
     <phase>deploy</phase>
