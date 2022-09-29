@@ -1,42 +1,41 @@
 ---
-layout: single
-title :  Round-Robin Iterable
-category : programming
-tags : [java]
+title:  "Round-Robin Iterable"
+category: programming
+tags: [java]
+date: 2013-10-24
 ---
-It is a solution I have written because my collegue was struggling to write a 
-code that was collecting one element for each list in an ordered way and 
-accepting list of different size.
-
-The problem was collecting 50 images from a third party supplier. Each record 
-has a set of albums, a ordered list of image, and a set of featured images pick
+I had the task of collecting 50 images from a third-party supplier. Each record 
+has a set of albums, an ordered list of images, and a set of featured them picked
 from the albums. We want to collect 50 images, starting from the feature and then
-going trough the albums in a round-robin fashon (the first for each album, the 
-second and so on). The album may have different size.
+going through the albums in a round-robin fashion (the first for each album, the second, and so on). The album may have different sizes.
 
 So if we have the feed containing these image id:
 
-    featuredImages: [1, 5, 4, 9]
-    albumOne: [1, 2, 3, 4]
-    albumTwo: [5, 6, 7, 8, 9, 10]
-    albumThree: [11]
-    albumFour: [12, 13, 14]
+```java
+featuredImages: [1, 5, 4, 9]
+albumOne: [1, 2, 3, 4]
+albumTwo: [5, 6, 7, 8, 9, 10]
+albumThree: [11]
+albumFour: [12, 13, 14]
+```
 
 And we want to collect 10 images we got:
 
-    images: [1, 5, 4, 9, 5, 11, 12, 2, 6, 13]
-    
-The most simple solution I have think to to has been to use [Guava Iterables](http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html)
+```java
+images: [1, 5, 4, 9, 5, 11, 12, 2, 6, 13]
+```
+
+The most simple solution I think, has been to use [Guava Iterables](http://docs.guava-libraries.googlecode.com/git-history/release/javadoc/com/google/common/collect/Iterables.html)
 to limit the image to 10. 
 
-{% highlight java %}
+```java
 Iterable<Image> images = limit(concat(featuredImages, albumImages), 10)
-{% endhighlight %}
+```
 
 But how can I obtain the albumImages in the right order (round-robin)? I need a
 custom {{Iterator}}, then I have written this one:
 
-{% highlight java %}
+```java
 public class RoundRobinIterable<T> implements Iterable<T> {
  
     private final Iterable<Iterable<T>> iterables;
@@ -94,15 +93,15 @@ public class RoundRobinIterable<T> implements Iterable<T> {
         };
     }
 }
-{% endhighlight %}
+```
 
-It leverage on the lazy evaluation of {{Iterator.hasNext()}} so the 
+It leverages on the lazy evaluation of {{Iterator.hasNext()}}, so the 
 {{Iterator<Iterator<T>>}} will cycle over the given iterator, skipping the empty
 iterators on the fly.
 
-And that's it. Well actually no, we want a test, don't we?
+And that's it. Well, actually, no, we want a test, don't we?
 
-{% highlight java %}
+```java
 public class RoundRobinIterableTest {
  
     @Test
@@ -114,7 +113,7 @@ public class RoundRobinIterableTest {
         assertThat(numbers, equalTo(expected));
     }
 }
-{% endhighlight %}
+```
 
 The full code is available at the [RoundRobinIterable.java gist](https://gist.github.com/filosganga/7134943)
 

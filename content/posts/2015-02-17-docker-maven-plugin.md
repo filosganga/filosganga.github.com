@@ -1,8 +1,8 @@
 ---
-layout: single
-title :  Docker maven plugin
-category : programming
-tags : [java, docker]
+title:  "Docker maven plugin"
+category: programming
+tags: [java, docker]
+date: 2015-02-17
 ---
 As Docker is gathering more interest from the big IT companies, it seems to be a perfect way to 
 delivery the applications to the production environemnt. If until now the maven artifct was the 
@@ -33,7 +33,7 @@ Let take a look how to apply this plugin to the Maven lifecycle: the phases we n
  
 First of all we have to add the plugin block under our build/plugins block:
 
-{% highlight xml %}
+```xml
 <plugin>
   <groupId>com.spotify</groupId>
   <artifactId>docker-maven-plugin</artifactId>
@@ -42,14 +42,14 @@ First of all we have to add the plugin block under our build/plugins block:
     <!-- ... -->
   </executions>
 </plugin>  
-{% endhighlight %}
+```
 
 
 Similary for what happen for the jar, we would like our artifact to be built as part of the package
 phase. So lets bind an execution to the package phase. Assuming that the build is generating a packaged
 application myapp.tar.gz and that we have our Dockerfile in /src/main/docker: 
 
-{% highlight xml %}
+```xml
 <execution>
     <id>build-docker-image</id>
     <phase>package</phase>
@@ -72,7 +72,7 @@ application myapp.tar.gz and that we have our Dockerfile in /src/main/docker:
     </configuration>
 
 </execution>
-{% endhighlight %}
+```
 
 The resources block can be used to add all the resources we need in our docker image. There is 
 also an alternative way to build image, using th xml to define the docker commands, but I will
@@ -87,7 +87,7 @@ Before the install phase, we can actually use the generated image for our functi
 integration tests, maybe using the `docker-client` Spotify library. How the install phase 
 looks like? here it is:
 
-{% highlight xml %}
+```xml
 <execution>
     <id>tag-docker-image</id>
     <phase>install</phase>
@@ -101,7 +101,7 @@ looks like? here it is:
         <newName>myuser/myapp:${project.version}</newName>
     </configuration>
 </execution>
-{% endhighlight %}
+```
 
 The `image` parameter should match with the `build` goal `imageName` parameter, if the tag 
 is omitted, the `latest` is assumed. 
@@ -111,7 +111,7 @@ now we can decide if we want to push on a remote docker registry. To push to a r
 we need actually to rename the image, because we need to add the namespace in front of it. So 
 we are going to reuse the `tag` goal again:
 
-{% highlight xml %}
+```
 <execution>
     <id>push-docker-image</id>
     <phase>deploy</phase>
@@ -126,7 +126,7 @@ we are going to reuse the `tag` goal again:
         <pushImage>true</pushImage> <!-- We are also pushing this time -->
     </configuration>
 </execution>
-{% endhighlight %}
+```
 
 Since the [0.1.2 version, released today](https://github.com/spotify/docker-maven-plugin/issues/53#issuecomment-74712040), it is possible to specify the remote registry 
 credentials only using maven properties at the moments, but they are enough flexible to

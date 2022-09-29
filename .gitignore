@@ -12,3 +12,5 @@ Thumbs.db
 *.iml
 .idea/
 .idea_modules/
+
+.history/

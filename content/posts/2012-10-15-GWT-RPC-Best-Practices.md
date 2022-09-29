@@ -1,8 +1,8 @@
 ---
-layout: single
-title :  GWT RPC Best Practices
-category : programming
-tags : [java, gwt, best-practices]
+title:  "GWT RPC Best Practices"
+category: programming
+tags: [java, GWT, best-practices]
+date: 2012-10-15
 ---
 The Google Web Toolkit (GWT) allows you write plain java code, and then to translate it 
 to client-side javascript code. Therefore it permits you to reuse your domain objects in the 
@@ -34,7 +34,7 @@ by the Spring context, you need to create two instances of the same interface:
 * A Servlet that delegates all method implementations to the Spring bean.
 
 This is a possible implementation of that:
-{% highlight java %}
+```java
 public abstract class GWTService {
 
     protected HttpServletRequest currentRequest() {
@@ -92,15 +92,16 @@ public abstract class GWTRemoteServiceServlet extends RemoteServiceServlet {
         GWTThreadLocals.instance().setResponse(getThreadLocalResponse());
     }
 }
-{% endhighlight %}
+```
 
 So if we need to implement a GWT service interface, we have to extend 
-{{GWTService}} and implement our interface. Then we have to write our Servlet 
-that extends {{GWTRemoteServiceServlet}} and implements the same interface, delegating 
+`GWTService` and implement our interface. Then we have to write our Servlet 
+that extends `GWTRemoteServiceServlet` and implements the same interface, delegating 
 all method implementations to the Spring bean.
 
-This is the example for a {{ContactService}} interface:
-{% highlight java %}
+This is the example for a `ContactService` interface:
+
+```java
 @RemoteServiceRelativePath("ContactService")
 public interface ContactService extends RemoteService {
 
@@ -139,9 +140,9 @@ public class ContactServiceServlet extends GWTServiceServlet implements ContactS
        return delegate.findByName(name);
     }
 }
-{% endhighlight %}
+```
 
-Writing this code for each service is very boring job of course, but your IDE 
+Writing this code for each service is a very boring job of course, but your IDE 
 can do it for you.
 
 How you can notice the {{ContactInterface}} expose the {{ArrayList}} concrete type

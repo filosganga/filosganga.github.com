@@ -1,8 +1,8 @@
 ---
-layout: single
-title :  Pimping JSoup
-category : programming
-tags : [scala, jsoup]
+title:  "Pimping JSoup"
+category: programming
+tags: [scala, jsoup]
+date: 2012-11-02
 ---
 I started to develop a web crawler part of a bigger project, then I have to 
 choice what kind of HTML parser library I have to use. I have used NekoHTML
@@ -15,8 +15,9 @@ a Scala crawler so beside the [JSoup](http://jsoup.org/) interface is pretty
 cool, it is very javish, I prefer to have a better integration with Scala, so 
 I started my first [Pimp My Library](http://www.artima.com/weblogs/viewpost.jsp?thread=179766) pattern.
 
-Let talk the code:
-{% highlight scala %}
+Let the code talk:
+
+```java
 object Jsoup extends Jsoup
 
 trait Jsoup {
@@ -99,8 +100,8 @@ class RichElements(target: Elements) extends Iterable[Element] {
   }
 
 }
-{% endhighlight %}
+```
 
-The code has been upload to github [SSoup](https://github.com/filosganga/ssoup) reporitory. 
+The code is available at [https://github.com/filosganga/ssoup]. 
 
 Happy coding!

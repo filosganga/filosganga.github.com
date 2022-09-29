@@ -1,29 +1,24 @@
 ---
-layout: single
-category : programming
-tags : [java, rest]
+title: "REST method override filter"
+category: programming
+tags: [java, rest]
+date: 2010-04-21
 ---
-The actual trend of developing application based on REST service can find an obstacle in the proxy and firewall 
-configurations. Most of these drops requests other than GET and POST. The best practices of REST API design involve 
-the use of all HTTP method to describe the action, rather than changing the URI. The URI should identify the 
-resources nor the actions.
+The current trend of developing web applications based on REST service can find an obstacle in the proxy and firewall 
+configurations: most of these drop requests other than the `GET` and `POST`. The best practices of REST API design involve 
+using all HTTP methods to describe the actions, rather than changing the URI, i.e., The URI should identify the resources, not the actions.
 
-An URI as `http://example.com/users/delete/6` is a very bad example of REST API implementation. It should be
+A URI like `http://example.com/users/delete/6` is an example of how somebody should represent REST API resources. It should be
 `http://example.com/users/6` and handle the DELETE method to remove the user with id `6`.
 
-A smart solution to keep the API clean, is overriding the original method with one specified in a request header. So a 
-POST method can act as PUT or DELETE method adding a known header to the request. The `X-HTTP-Method-Override` is the 
-header that is used to to that
+A clever solution to keep the API clean is to override the original method with one specified in a request header. So that a 
+`POST` method can act as the `PUT` or `DELETE` methods. The `X-HTTP-Method-Override` is the commonly used
+header for this purpose.
 
-##The java sourcecode:
-{% highlight java %}
+## The java source code:
 
-	/**
-	 *
-	 * @author Filippo De Luca
-	 *
-	 * @version $Id$
-	 */
+```java
+
 	public class MethodOverrideFilter implements Filter {
 	
 		public static final String HEADER_PARAM = "methodOverrideHeader";
@@ -99,6 +94,6 @@ header that is used to to that
 		}
 	}
 
-{% endhighlight %}
+```
 
-The source is hosted at [this gist](https://gist.github.com/923414).
+You can find the source code at [https://gist.github.com/923414].

@@ -1,0 +1,24 @@
+baseURL: "http://example.org/"
+languageCode: en
+title: Filippo De Luca
+theme: anatole
+params:
+  title: Filippo De Luca
+  author: Filippo De Luca
+  description: You da man!
+  profilePicture: images/profile.jpg
+  pygmentsCodeFences: true
+  pygmentsUseClasses: true
+  pygmentsCodefencesGuessSyntax: true
+  customCss:
+    - css/syntax.css
+  socialIcons:
+    - icon: fab fa-linkedin
+      title: Linkedin
+      url: "https://www.linkedin.com/in/filippodeluca/"
+    - icon: fab fa-github
+      title: Github
+      url: "https://github.com/filosganga"
+    - icon: fab fa-twitter
+      title: Twitter
+      url: "https://twitter.com/FilippoDeLuca"
