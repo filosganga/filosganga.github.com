@@ -1,0 +1,31 @@
+baseURL = 'https://filippodeluca.com/'
+languageCode = 'en-us'
+title = "Fillipo's workshop"
+theme = "lekh"
+
+[params]
+Name = "Filippo De Luca"
+About = """You da man!
+
+These are the words the CTO has exclaimed when I reduced the application load time of 80%. I am very committed to this kind of results, I always look forward to improve what we have and innovate, innovate and innovate. I am not a conservative guy, I don't like the rules, they are written to be re-written when they don't fit anymore. In this dynamic world they are obsolete before you finish to write them.
+"""
+Email = "me@filippodeluca.com"
+Resume = "" # Add the filename with file extension.
+PostLimit = 4
+GoatCounterCode = ""
+
+[[params.profiles]]
+name = "GitHub"
+url = "https://github.com/filosganga"
+
+[[params.profiles]]
+name = "Twitter"
+url = "https://twitter.com/FilippoDeLuca"
+
+[[params.profiles]]
+name = "Mastodon"
+url = "https://mastodon.social/@filippodeluca"
+
+[[params.profiles]]
+name = "LinkedIn"
+url = "https://www.linkedin.com/in/filippodeluca"
