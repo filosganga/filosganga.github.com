@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About">
+  <section class="hero" style="padding-top: 3.5rem;">
+    <span class="eyebrow">About</span>
+    <h1>Background</h1>
+
+    <div class="prose" style="color: var(--ink-dim); font-size: 1.05rem;">
+      <p>
+        I'm a senior software engineer on the device team at SiriusXM, building
+        backend services in Scala with Cats Effect, running on AWS
+        (Lambda, DynamoDB, Kinesis, Secrets Manager, CDK). I work remotely
+        from Rome.
+      </p>
+      <p>
+        Before that I was at Kaluza (OVO Energy) in the UK, where I designed
+        and led a GraphQL-over-Kafka API architecture — bridging a
+        request/response API model onto an event-streaming backbone.
+      </p>
+      <p>
+        My path into software wasn't the usual one: I trained as a
+        <em>perito meccanico</em> — a mechanical technician — before moving
+        into engineering. That background shapes how I think about systems:
+        tolerances, failure modes, and the difference between something that
+        works on the bench and something that survives contact with
+        production.
+      </p>
+    </div>
+
+    <hr class="hr-dashed" />
+
+    <h2>Experience</h2>
+    <div class="spec-sheet">
+      <div class="spec-row">
+        <div class="spec-key">Now</div>
+        <div class="spec-val">Senior Software Engineer — <span class="dim">SiriusXM, User Services / Device team</span></div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Prior</div>
+        <div class="spec-val">Software Engineer — <span class="dim">Kaluza / OVO Energy, UK — GraphQL-over-Kafka API architecture</span></div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Earlier</div>
+        <div class="spec-val">Perito Meccanico — <span class="dim">mechanical technician training, Italy</span></div>
+      </div>
+    </div>
+
+    <hr class="hr-dashed" />
+
+    <h2>Stack</h2>
+    <div class="spec-sheet">
+      <div class="spec-row">
+        <div class="spec-key">Languages</div>
+        <div class="spec-val">Scala <span class="dim">(primary)</span></div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Runtime</div>
+        <div class="spec-val">Cats Effect, functional programming</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Infra</div>
+        <div class="spec-val">AWS Lambda, DynamoDB, Kinesis, Secrets Manager, CDK</div>
+      </div>
+    </div>
+
+    <hr class="hr-dashed" />
+
+    <h2>Outside of work</h2>
+    <p style="color: var(--ink-dim);">
+      Competitive RC car racing, scale modeling and airbrushing, stand-up
+      paddleboarding and freediving — plus a long-running interest in
+      motorsport history.
+    </p>
+
+    <div style="margin-top: 2rem;">
+      <a class="tag-link" href="mailto:me@filippodeluca.com">me@filippodeluca.com</a>
+    </div>
+  </section>
+</BaseLayout>
