@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Filippo De Luca — software engineer. Scala, Cats Effect, distributed systems, and a background in mechanical engineering.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <title>{title} · Filippo De Luca</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="site-nav">
+      <div class="wrap">
+        <a class="brand" href="/">filippodeluca<span style="color: var(--accent);">.</span>com</a>
+        <ul>
+          <li><a class="nav-link" href="/">home</a></li>
+          <li><a class="nav-link" href="/about/">about</a></li>
+          <li><a class="nav-link" href="/blog/">blog</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap title-block">
+        <div class="tb-cell">
+          <span class="eyebrow">Drawn by</span>
+          <div class="tb-val">Filippo De Luca</div>
+        </div>
+        <div class="tb-cell">
+          <span class="eyebrow">Contact</span>
+          <div class="tb-val"><a href="mailto:me@filippodeluca.com">me@filippodeluca.com</a></div>
+        </div>
+        <div class="tb-cell">
+          <span class="eyebrow">Elsewhere</span>
+          <div class="tb-val">
+            <a href="https://github.com/filosganga" target="_blank" rel="noopener">GitHub</a> ·
+            <a href="https://www.linkedin.com/in/filippodeluca" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://mastodon.social/@filippodeluca" target="_blank" rel="noopener me">Mastodon</a>
+          </div>
+        </div>
+        <div class="tb-cell">
+          <span class="eyebrow">Rev.</span>
+          <div class="tb-val">{new Date().getFullYear()}</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

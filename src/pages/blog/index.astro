@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
+---
+
+<BaseLayout title="Blog" description="Posts by Filippo De Luca.">
+  <section class="hero" style="padding-top: 3.5rem;">
+    <span class="eyebrow">Log</span>
+    <h1>All posts</h1>
+
+    <div class="entry-list">
+      {posts.map((post) => (
+        <a class="entry" href={`/blog/${post.slug}/`}>
+          <span class="entry-date">{dateFmt.format(post.data.date)}</span>
+          <span>
+            <span class="entry-title">{post.data.title}</span>
+            {post.data.excerpt && <div class="entry-excerpt">{post.data.excerpt}</div>}
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
