@@ -4,21 +4,24 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  canonical?: string;
 }
 
 const {
   title,
+  canonical,
   description = 'Filippo De Luca — software engineer. Scala, Cats Effect, distributed systems, and a background in mechanical engineering.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
     <title>{title} · Filippo De Luca</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
