@@ -4,7 +4,7 @@ date: 2026-08-28
 tags: ["scala", "type-classes", "functional-programming"]
 excerpt: "Duck typing says: if it quacks, it's a duck. Type classes say something stranger and more useful — it is not a duck, it never was, and you taught it to quack anyway."
 image: "/og-how-a-cat-can-quack.png"
-draft: true
+draft: false
 ---
 
 ![A cat drawn as a technical diagram, with a duck bill fitted over its muzzle and labelled "quack module — fitted externally, type unchanged"](/og-how-a-cat-can-quack.png)
