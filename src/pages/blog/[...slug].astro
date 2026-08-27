@@ -20,7 +20,7 @@ const { Content } = await post.render();
 const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: '2-digit' });
 ---
 
-<BaseLayout title={post.data.title} description={post.data.excerpt}>
+<BaseLayout title={post.data.title} description={post.data.excerpt} canonical={post.data.canonicalUrl}>
   <article class="hero" style="padding-top: 3.5rem;">
     <span class="eyebrow">{dateFmt.format(post.data.date)}</span>
     <h1>{post.data.title}</h1>
