@@ -18,7 +18,10 @@ const {
   description = 'Filippo De Luca — software engineer. Scala, Cats Effect, distributed systems, and a background in mechanical engineering.',
 } = Astro.props;
 
-const fullTitle = `${title} · Filippo De Luca`;
+// The home page is already titled "Filippo De Luca"; appending the site
+// name there would print it twice.
+const SITE_NAME = 'Filippo De Luca';
+const fullTitle = title === SITE_NAME ? title : `${title} · ${SITE_NAME}`;
 // og:url always points here, even when rel=canonical credits an earlier
 // publication elsewhere: the two answer different questions.
 const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -35,7 +38,7 @@ const imageUrl = new URL(image, Astro.site).href;
     {canonical && <link rel="canonical" href={canonical} />}
 
     <meta property="og:type" content={type} />
-    <meta property="og:site_name" content="Filippo De Luca" />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={pageUrl} />
@@ -46,7 +49,7 @@ const imageUrl = new URL(image, Astro.site).href;
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
-    <title>{title} · Filippo De Luca</title>
+    <title>{fullTitle}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
