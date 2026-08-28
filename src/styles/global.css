@@ -311,3 +311,18 @@ p { margin: 0 0 1.2em; }
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Tag pills — links, so they need to look clickable without shouting */
+.tag-pill {
+  border: 1px solid var(--line-strong);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  text-decoration: none;
+  color: var(--ink-dim);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.tag-pill:hover,
+.tag-pill:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+}

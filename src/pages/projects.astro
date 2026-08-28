@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { resolveProjects } from '../lib/github';
+
+// Resolved once, at build time. A deploy refreshes the numbers.
+const projects = await resolveProjects();
+
+const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'short' });
+const anyStats = projects.some((p) => p.stats);
+---
+
+<BaseLayout
+  title="Projects"
+  description="Open source by Filippo De Luca — Kafka serialization, deduplication, JSONPath and request batching, in Scala."
+>
+  <section class="hero" style="padding-top: 3.5rem;">
+    <span class="eyebrow">Open source</span>
+    <h1>Projects</h1>
+
+    <p style="max-width: 40rem; color: var(--ink-dim);">
+      Libraries I maintain and use. There are eighty-odd repositories on my
+      GitHub — most are old, in other languages, or were built to learn
+      something. These are the ones worth your time.
+    </p>
+
+    <div class="spec-sheet" role="list">
+      {projects.map((p) => (
+        <article class="spec-row" role="listitem" style="display: block; padding-block: 1.4rem;">
+          <div style="display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;">
+            <a class="entry-title" href={p.stats?.url ?? `https://github.com/${p.repo}`}>
+              {p.name}
+            </a>
+            {p.stats?.language && <span class="meta">{p.stats.language}</span>}
+            {p.stats?.archived && <span class="meta" style="color: var(--accent);">archived</span>}
+          </div>
+
+          <p style="margin: 0.5rem 0 0.75rem; color: var(--ink-dim); max-width: 44rem;" set:html={
+            p.blurb.replace(/`([^`]+)`/g, '<code>$1</code>')
+          } />
+
+          {p.stats && (
+            <div class="meta" style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+              <span>{p.stats.stars} ★</span>
+              <span>{p.stats.forks} forks</span>
+              <span>last push {dateFmt.format(new Date(p.stats.pushedAt))}</span>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    {anyStats && (
+      <p class="meta" style="margin-top: 1.5rem;">
+        Figures come from the GitHub API when the site is built, so they are as
+        current as the last deploy.
+      </p>
+    )}
+
+    <hr class="hr-dashed" />
+    <a class="tag-link" href="https://github.com/filosganga">Everything else on GitHub →</a>
+  </section>
+</BaseLayout>
