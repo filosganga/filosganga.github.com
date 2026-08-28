@@ -183,6 +183,18 @@ The obvious cost is that now you're storing payloads, not timestamps, and every 
 that applies to your database's item size applies to your responses. Big results need a
 pointer rather than the thing itself.
 
+The less obvious cost is that it changes what your callers observe, and existing tests may
+be asserting the old shape without anyone noticing. When I made this change, a test fired
+120 concurrent calls to `protect(id, IO(1))` and asserted the results summed to 1 — sound
+enough when duplicates returned nothing. It came back 120. Every deduplicated caller now
+receives the memoized result, so the sum counts callers rather than executions. The
+failure was the feature.
+
+The test wanted to check that the effect ran once, and the sum had been standing in for
+that. With memoization the two questions separate: count executions with a counter, and
+assert independently that everyone got the same value back. Worth knowing before the same
+number surprises you in production, where nothing is asserting anything.
+
 ## What you actually end up with
 
 Not exactly-once. Something narrower, and true:
