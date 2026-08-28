@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { readingTime } from '../../../lib/readingTime';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
+---
+
+<BaseLayout title={`#${tag}`} description={`Posts tagged ${tag}.`}>
+  <section class="hero" style="padding-top: 3.5rem;">
+    <span class="eyebrow">Tag</span>
+    <h1>#{tag}</h1>
+    <p class="meta">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+
+    <div class="entry-list">
+      {posts.map((post) => (
+        <a class="entry" href={`/blog/${post.slug}/`}>
+          <span class="entry-date">
+            {dateFmt.format(post.data.date)} · {readingTime(post.body)} min
+          </span>
+          <span>
+            <span class="entry-title">{post.data.title}</span>
+            {post.data.excerpt && <div class="entry-excerpt">{post.data.excerpt}</div>}
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <hr class="hr-dashed" />
+    <a class="tag-link" href="/blog/">← All posts</a>
+  </section>
+</BaseLayout>

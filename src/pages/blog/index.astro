@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { readingTime } from '../../lib/readingTime';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -16,7 +17,7 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'shor
     <div class="entry-list">
       {posts.map((post) => (
         <a class="entry" href={`/blog/${post.slug}/`}>
-          <span class="entry-date">{dateFmt.format(post.data.date)}</span>
+          <span class="entry-date">{dateFmt.format(post.data.date)} · {readingTime(post.body)} min</span>
           <span>
             <span class="entry-title">{post.data.title}</span>
             {post.data.excerpt && <div class="entry-excerpt">{post.data.excerpt}</div>}

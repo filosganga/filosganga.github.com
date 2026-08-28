@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { readingTime } from '../../lib/readingTime';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -22,13 +23,13 @@ const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long
 
 <BaseLayout title={post.data.title} description={post.data.excerpt} canonical={post.data.canonicalUrl} image={post.data.image} type="article">
   <article class="hero" style="padding-top: 3.5rem;">
-    <span class="eyebrow">{dateFmt.format(post.data.date)}</span>
+    <span class="eyebrow">{dateFmt.format(post.data.date)} · {readingTime(post.body)} min read</span>
     <h1>{post.data.title}</h1>
 
     {post.data.tags.length > 0 && (
       <div style="margin-bottom: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
         {post.data.tags.map((tag) => (
-          <span class="meta" style="border: 1px solid var(--line-strong); padding: 0.2rem 0.6rem; border-radius: 2px;">#{tag}</span>
+          <a class="meta tag-pill" href={`/blog/tag/${tag}/`}>#{tag}</a>
         ))}
       </div>
     )}
