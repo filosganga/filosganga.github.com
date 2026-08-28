@@ -23,6 +23,11 @@ jobs:
 
       - name: Install, build and upload site
         uses: withastro/action@v3
+        env:
+          # Lifts the projects lookup from 60 requests/hour per IP — shared on
+          # hosted runners — to 5000. The build degrades gracefully without it,
+          # but degrading is not the same as being right.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # If your repo is a project page (https://<user>.github.io/<repo>/)
         # rather than a custom domain, also set `path: .` and make sure
         # astro.config.mjs `base` matches the repo name.
