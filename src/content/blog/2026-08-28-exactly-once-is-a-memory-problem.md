@@ -139,16 +139,30 @@ evicts old records on its own.
 
 ## Skipping is not always enough
 
-Everything so far assumes that finding `completedAt` means you're done: the work already
-happened, so return and move on. For a consumer draining a topic that's exactly right —
-nobody is waiting for an answer.
+Everything so far assumes that finding `completedAt` means you're done: the work happened,
+return, move on. For a consumer draining a topic that's usually right — nobody is waiting
+for an answer.
 
-Now put the same machinery behind an idempotent API. A client sends a request with an
-idempotency key, times out, and retries. The work was done the first time, so you must not
-do it again — but the client is still waiting, and *"already handled"* is not an answer.
-It needs the same response the first attempt produced.
+Then you send an email.
 
-Which means the record has to remember more than the fact. It has to remember the result:
+You hand the message to a provider — Mailgun, say — and it hands you back a message id.
+That id is how you'll correlate the delivery, bounce and complaint webhooks that arrive
+minutes or days later, and it's what you store against the record in your own domain.
+
+Now the message gets redelivered. Deduplication does its job perfectly: the email was
+already sent, so you must not send it again. Correct, and useless — because the code that
+asked you to send it still needs that id, and skipping hands it nothing.
+
+And the id is not recoverable. You didn't compute it; the provider did. It exists in
+exactly one place: the response to a call you have already made and must never make again.
+Miss it once and it's gone.
+
+That's what separates this from caching. A cache is an optimisation — on a miss you
+recompute and carry on. Here there is no recomputing, because repeating the effect is
+precisely the thing you are forbidden to do. The only copy of that value is the one you
+remembered to keep.
+
+So the record has to remember more than the fact. It has to remember the result:
 
 ```scala
 trait Mnemosyne[F[_], Id, ProcessorId, Memoized]:
@@ -157,9 +171,8 @@ trait Mnemosyne[F[_], Id, ProcessorId, Memoized]:
 
 The effect now returns a value, and so does `protect`. On a first attempt it runs `fa` and
 stores what came back alongside `completedAt`. On a duplicate it doesn't run anything — it
-hands back what it stored. Deduplication has quietly become memoization, which is the same
-idea a caching layer uses, except the cache key is "this request already happened" rather
-than "this input was seen before".
+hands back what it stored — the Mailgun id, in the example above, without going anywhere
+near Mailgun. Deduplication has quietly become memoization.
 
 And here's the part that makes it nearly free: **the conditional write that tells you the
 signal was already processed is the same one that hands you the stored result.** One
