@@ -137,6 +137,39 @@ operator might rewind offsets — and make it comfortably longer than that.
 With DynamoDB, `expiresOn` as a TTL attribute means the cleanup is free: the table
 evicts old records on its own.
 
+## Skipping is not always enough
+
+Everything so far assumes that finding `completedAt` means you're done: the work already
+happened, so return and move on. For a consumer draining a topic that's exactly right —
+nobody is waiting for an answer.
+
+Now put the same machinery behind an idempotent API. A client sends a request with an
+idempotency key, times out, and retries. The work was done the first time, so you must not
+do it again — but the client is still waiting, and *"already handled"* is not an answer.
+It needs the same response the first attempt produced.
+
+Which means the record has to remember more than the fact. It has to remember the result:
+
+```scala
+trait Mnemosyne[F[_], Id, ProcessorId, Memoized]:
+  def protect(id: Id, fa: F[Memoized]): F[Memoized]
+```
+
+The effect now returns a value, and so does `protect`. On a first attempt it runs `fa` and
+stores what came back alongside `completedAt`. On a duplicate it doesn't run anything — it
+hands back what it stored. Deduplication has quietly become memoization, which is the same
+idea a caching layer uses, except the cache key is "this request already happened" rather
+than "this input was seen before".
+
+And here's the part that makes it nearly free: **the conditional write that tells you the
+signal was already processed is the same one that hands you the stored result.** One
+round-trip either way. You were already reading the previous value to make the decision;
+the answer rides along with it.
+
+The obvious cost is that now you're storing payloads, not timestamps, and every constraint
+that applies to your database's item size applies to your responses. Big results need a
+pointer rather than the thing itself.
+
 ## What you actually end up with
 
 Not exactly-once. Something narrower, and true:
@@ -152,6 +185,8 @@ clause is the one that will break.
 The implementation of all this is [mnemosyne](https://github.com/filosganga/mnemosyne) —
 named after the Greek goddess of memory, which is the entire point. It wraps an effect in
 `protect` and runs it once per processor, and it's about as much code as this post
-suggests it should be. The interesting part was never the code. It was noticing that the
-whole thing reduces to one conditional write, and that your database probably already
-does it.
+suggests it should be. There's a [Rust port](https://github.com/filosganga/mnemosyne.rs)
+too, which grew the memoized variant first.
+
+The interesting part was never the code. It was noticing that the whole thing reduces to
+one conditional write — and that your database probably already does it.
