@@ -198,8 +198,12 @@ clause is the one that will break.
 The implementation of all this is [mnemosyne](https://github.com/filosganga/mnemosyne) —
 named after the Greek goddess of memory, which is the entire point. It wraps an effect in
 `protect` and runs it once per processor, and it's about as much code as this post
-suggests it should be. There's a [Rust port](https://github.com/filosganga/mnemosyne.rs)
-too, which grew the memoized variant first.
+suggests it should be.
+
+One caveat on the memoized variant above: it landed first in the
+[Rust port](https://github.com/filosganga/mnemosyne.rs), and in the Scala library it is
+still an open pull request rather than a released API. The design is settled; the
+plumbing isn't.
 
 The interesting part was never the code. It was noticing that the whole thing reduces to
 one conditional write — and that your database probably already does it.
