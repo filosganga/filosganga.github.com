@@ -1,6 +1,6 @@
 ---
 title: "Splitting events by type breaks the only ordering you had"
-date: 2026-08-28
+date: 2026-09-08
 tags: ["kafka", "event-sourcing", "distributed-systems", "architecture"]
 excerpt: "Three ways to lay out domain events across Kafka topics. One of them looks like the tidy option and quietly costs you the ability to rebuild state at all."
 image: "/og-splitting-events-by-type.png"
