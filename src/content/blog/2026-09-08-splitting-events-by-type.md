@@ -4,7 +4,7 @@ date: 2026-09-08
 tags: ["kafka", "event-sourcing", "distributed-systems", "architecture"]
 excerpt: "Three ways to lay out domain events across Kafka topics. One of them looks like the tidy option and quietly costs you the ability to rebuild state at all."
 image: "/og-splitting-events-by-type.png"
-draft: true
+draft: false
 ---
 
 ![Three Kafka topic layouts drawn as a technical sheet: one topic per entity with several event types, one topic of self-contained snapshots, and one topic per event type — the last one marked as having no ordering between its partitions](/og-splitting-events-by-type.png)
