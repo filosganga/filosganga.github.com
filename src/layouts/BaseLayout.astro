@@ -21,6 +21,9 @@ const {
 // The home page is already titled "Filippo De Luca"; appending the site
 // name there would print it twice.
 const SITE_NAME = 'Filippo De Luca';
+// Google Analytics 4. Public by nature — it ships in the page source — so it
+// lives here rather than in an environment variable pretending to be a secret.
+const GA_MEASUREMENT_ID = 'G-4NQKM71HY6';
 const fullTitle = title === SITE_NAME ? title : `${title} · ${SITE_NAME}`;
 // og:url always points here, even when rel=canonical credits an earlier
 // publication elsewhere: the two answer different questions.
@@ -58,6 +61,22 @@ const imageUrl = new URL(image, Astro.site).href;
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    {/* Production only: a dev server reloading on every keystroke would file
+        those as real page views and quietly poison the numbers. */}
+    {import.meta.env.PROD && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+        <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          // Astro wraps inline scripts in an IIFE, so gtag has to be put on
+          // window explicitly — otherwise custom events could never call it.
+          window.gtag = function gtag() { dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', GA_MEASUREMENT_ID);
+        </script>
+      </>
+    )}
   </head>
   <body>
     <nav class="site-nav">
