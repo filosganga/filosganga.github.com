@@ -58,6 +58,20 @@ const imageUrl = new URL(image, Astro.site).href;
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    {/* GoatCounter. No cookies and nothing written to the visitor's device,
+        which is what keeps this site free of a consent banner: the ePrivacy
+        rule that triggers one is about storing or reading data on the device,
+        not about collecting anything.
+
+        Production only — a dev server reloads on every keystroke, and each
+        reload would be counted as a real page view. */}
+    {import.meta.env.PROD && (
+      <script
+        data-goatcounter="https://filippodeluca.goatcounter.com/count"
+        async
+        src="https://gc.zgo.at/count.js"></script>
+    )}
   </head>
   <body>
     <nav class="site-nav">
