@@ -9,15 +9,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="prose" style="color: var(--ink-dim); font-size: 1.05rem;">
       <p>
-        I'm a freelance software engineer, currently technical lead on the
-        device team at SiriusXM, building backend services in Scala with
-        Cats Effect, running on AWS (Lambda, DynamoDB, Kinesis, Secrets
-        Manager, CDK). I work remotely from Rome.
-      </p>
-      <p>
-        Before that I was at Kaluza (OVO Energy) in the UK, where I designed
-        and led a GraphQL-over-Kafka API architecture — bridging a
-        request/response API model onto an event-streaming backbone.
+        I'm a freelance software engineer. I've been writing software
+        professionally since 1996, and for the last decade almost only
+        event-driven backends in Scala: Kafka, Cats Effect, AWS. Right now
+        I'm technical lead on the device identity and authentication
+        service at SiriusXM. I work remotely from Rome.
       </p>
       <p>
         My path into software wasn't the usual one: I trained as a
@@ -32,18 +28,94 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <hr class="hr-dashed" />
 
     <h2>Experience</h2>
-    <div class="spec-sheet">
+    <div class="spec-sheet spec-sheet-roles">
       <div class="spec-row">
-        <div class="spec-key">Now</div>
-        <div class="spec-val">Technical Lead (contract) — <span class="dim">SiriusXM, User Services / Device team</span></div>
+        <div class="spec-key">2023 – now</div>
+        <div class="spec-val">
+          <strong>Technical Lead (contract) — SiriusXM</strong>
+          <span class="dim">· device identity &amp; authentication · team of five</span>
+          <ul>
+            <li>Own the service that identifies and authenticates SiriusXM's device fleet, close to a billion devices. Most of them don't call it yet, and it already peaks at 7.5 million requests every two hours, around 1.5k requests per second at the top of the curve.</li>
+            <li>Load-tested at 40k requests per second: p95 latency under 100 ms for most of the run and never above 400 ms.</li>
+            <li>Runs active in three AWS regions on DynamoDB global tables and Kinesis, with steady-state latency in the low tens of milliseconds.</li>
+            <li>Designed and launched the new authentication stack. No major customer-facing outage since.</li>
+            <li>Absorbed an unplanned upstream traffic spike of over fifty times normal load without dropping requests, with latency that stayed workable.</li>
+            <li>Three years of features shipped without a single breaking change to the API.</li>
+          </ul>
+        </div>
       </div>
       <div class="spec-row">
-        <div class="spec-key">Prior</div>
-        <div class="spec-val">Technical Lead — <span class="dim">Kaluza / OVO Energy, UK — GraphQL-over-Kafka API architecture</span></div>
+        <div class="spec-key">2019 – 2023</div>
+        <div class="spec-val">
+          <strong>Technical Lead — Kaluza (OVO Group)</strong>
+          <span class="dim">· foundation platform</span>
+          <ul>
+            <li>Led the platform's external interfaces: GraphQL over Kafka, event webhooks and data analytics, ingesting heterogeneous Kafka topics into DynamoDB and BigQuery while keeping Avro compatibility.</li>
+            <li>Main contributor to the shared libraries the business ran on: a state machine over Kafka, a DynamoDB-based deduplication library, non-blocking S3 and DynamoDB clients, and the Kafka serializer DSL that became <a href="/projects/">kafka-serialization</a>.</li>
+            <li>Led the internal Kafka community and shaped the data strategy behind the company's distributed architecture.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">2016 – 2019</div>
+        <div class="spec-val">
+          <strong>Principal Software Engineer — OVO Energy</strong>
+          <span class="dim">· London</span>
+          <ul>
+            <li>Built the multi-channel customer communication platform (email, SMS, print): one template format and one API, so product teams reach each customer on their preferred channel and ship messaging faster.</li>
+            <li>Helped other teams adopt event sourcing on Kafka, and published the department's open-source work.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">2015 – 2016</div>
+        <div class="spec-val">
+          <strong>Senior Software Engineer — QuanTemplate</strong>
+          <span class="dim">· London</span>
+          <ul>
+            <li>Reactive distributed document store on CQRS with Akka, continuously deployed with GoCD, Ansible and Docker.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">2013 – 2015</div>
+        <div class="spec-val">
+          <strong>Senior Software Engineer — Expedia</strong>
+          <span class="dim">· London</span>
+          <ul>
+            <li>Automated SEM bidding across AdWords and Bing on Scala, Akka, Kafka, Cassandra and Hadoop; before that, Hotels.com core services (geo search, autocomplete).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">2011 – 2013</div>
+        <div class="spec-val">
+          <strong>Senior Developer — Moreover Technologies</strong>
+          <span class="dim">· London</span>
+          <ul>
+            <li>REST backend for Newsdesk, consumed by the mobile app and a rebuilt GWT front end.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">2008 – 2010</div>
+        <div class="spec-val">
+          <strong>Developer — WURFL-Pro</strong>
+          <span class="dim">· Rome</span>
+          <ul>
+            <li>Developed and maintained the open-source WURFL API 1.0.x series and the WNG and WALL mobile web libraries; built CNN's Beijing 2008 mobile site.</li>
+          </ul>
+        </div>
       </div>
       <div class="spec-row">
         <div class="spec-key">Earlier</div>
-        <div class="spec-val">Perito Meccanico — <span class="dim">mechanical technician training, Italy</span></div>
+        <div class="spec-val">
+          <strong>Developer and sysadmin — Circolo Canottieri Roma</strong>
+          <span class="dim">· 2000 – 2011, part-time</span>
+          <ul>
+            <li>Where it started: Linux and Windows servers, a Java Swing and EJB management system bridged to legacy COBOL.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -57,7 +129,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <div class="spec-row">
         <div class="spec-key">Runtime</div>
-        <div class="spec-val">Cats Effect, functional programming</div>
+        <div class="spec-val">Cats Effect, fs2, http4s, functional programming</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Data</div>
+        <div class="spec-val">Apache Kafka, Avro and the Schema Registry, DynamoDB, BigQuery</div>
       </div>
       <div class="spec-row">
         <div class="spec-key">Infra</div>
@@ -74,8 +150,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       motorsport history.
     </p>
 
-    <div style="margin-top: 2rem;">
-      <a class="tag-link" href="mailto:me@filippodeluca.com">me@filippodeluca.com</a>
+    <div style="margin-top: 2rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+      <a class="tag-link primary" href="mailto:me@filippodeluca.com">Get in touch →</a>
+      <a class="tag-link" href="https://www.linkedin.com/in/filippodeluca" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </section>
 </BaseLayout>
