@@ -4,7 +4,6 @@ date: 2026-09-22
 tags: ["distributed-systems", "kafka", "dynamodb", "scala"]
 excerpt: "You will receive the same message twice. The fix isn't a stronger delivery guarantee — it's remembering what you already did, and one database primitive is enough to do it."
 image: "/og-exactly-once.png"
-draft: true
 ---
 
 ![A technical sheet showing the deduplication record — id, processorId, startedAt, completedAt, expiresOn — and the four states a processor can find, each with its decision](/og-exactly-once.png)
