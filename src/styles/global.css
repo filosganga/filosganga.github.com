@@ -195,6 +195,24 @@ p { margin: 0 0 1.2em; }
 .spec-row .spec-val .dim {
   color: var(--ink-dim);
 }
+/* Role entries on the About page: a title line plus outcome bullets */
+.spec-sheet-roles .spec-row {
+  padding: 1.2rem 0;
+}
+.spec-sheet-roles .spec-val ul {
+  margin: 0.55rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+  max-width: var(--measure);
+}
+.spec-sheet-roles .spec-val li {
+  margin: 0.3rem 0;
+}
+.spec-sheet-roles .spec-val a {
+  color: inherit;
+  text-decoration-color: var(--line-strong);
+}
 
 /* --- Cards / post list rows (parts-index style) --- */
 .entry-list {
