@@ -264,6 +264,34 @@ p { margin: 0 0 1.2em; }
   color: var(--accent);
 }
 
+/* Ask-an-AI row on the About page */
+.ask-ai {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+.ask-ai .ask-ai-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+.ask-ai button.tag-link {
+  background: transparent;
+  cursor: pointer;
+  line-height: inherit;
+}
+.ask-ai .ask-ai-note {
+  flex-basis: 100%;
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+}
+.ask-ai .ask-ai-note a { color: inherit; }
+
 /* --- Prose (blog post body) --- */
 .prose {
   max-width: var(--measure);

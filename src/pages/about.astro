@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const PROMPT = `Read https://filippodeluca.com/llms.txt, the plain-text résumé of a freelance software engineer. If I paste a job description or a project brief, tell me where he is a strong match, where he is thin, and what I should ask him. If I don't, give me one paragraph on what he does best and the kind of work to hire him for. Cite specific roles or projects. If something isn't in the file, say so instead of guessing. Keep it short.`;
 ---
 
 <BaseLayout title="About">
@@ -23,6 +25,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         works on the bench and something that survives contact with
         production.
       </p>
+    </div>
+
+    <div class="ask-ai" role="group" aria-label="Ask an AI about my work">
+      <span class="ask-ai-label">Ask an AI about my work</span>
+      <a class="tag-link" href="https://claude.ai/new?q=Read%20https%3A%2F%2Ffilippodeluca.com%2Fllms.txt%2C%20the%20plain-text%20r%C3%A9sum%C3%A9%20of%20a%20freelance%20software%20engineer.%20If%20I%20paste%20a%20job%20description%20or%20a%20project%20brief%2C%20tell%20me%20where%20he%20is%20a%20strong%20match%2C%20where%20he%20is%20thin%2C%20and%20what%20I%20should%20ask%20him.%20If%20I%20don%27t%2C%20give%20me%20one%20paragraph%20on%20what%20he%20does%20best%20and%20the%20kind%20of%20work%20to%20hire%20him%20for.%20Cite%20specific%20roles%20or%20projects.%20If%20something%20isn%27t%20in%20the%20file%2C%20say%20so%20instead%20of%20guessing.%20Keep%20it%20short." target="_blank" rel="noopener">Claude ↗</a>
+      <a class="tag-link" href="https://chatgpt.com/?q=Read%20https%3A%2F%2Ffilippodeluca.com%2Fllms.txt%2C%20the%20plain-text%20r%C3%A9sum%C3%A9%20of%20a%20freelance%20software%20engineer.%20If%20I%20paste%20a%20job%20description%20or%20a%20project%20brief%2C%20tell%20me%20where%20he%20is%20a%20strong%20match%2C%20where%20he%20is%20thin%2C%20and%20what%20I%20should%20ask%20him.%20If%20I%20don%27t%2C%20give%20me%20one%20paragraph%20on%20what%20he%20does%20best%20and%20the%20kind%20of%20work%20to%20hire%20him%20for.%20Cite%20specific%20roles%20or%20projects.%20If%20something%20isn%27t%20in%20the%20file%2C%20say%20so%20instead%20of%20guessing.%20Keep%20it%20short." target="_blank" rel="noopener">ChatGPT ↗</a>
+      <a class="tag-link" href="https://www.perplexity.ai/search?q=Read%20https%3A%2F%2Ffilippodeluca.com%2Fllms.txt%2C%20the%20plain-text%20r%C3%A9sum%C3%A9%20of%20a%20freelance%20software%20engineer.%20If%20I%20paste%20a%20job%20description%20or%20a%20project%20brief%2C%20tell%20me%20where%20he%20is%20a%20strong%20match%2C%20where%20he%20is%20thin%2C%20and%20what%20I%20should%20ask%20him.%20If%20I%20don%27t%2C%20give%20me%20one%20paragraph%20on%20what%20he%20does%20best%20and%20the%20kind%20of%20work%20to%20hire%20him%20for.%20Cite%20specific%20roles%20or%20projects.%20If%20something%20isn%27t%20in%20the%20file%2C%20say%20so%20instead%20of%20guessing.%20Keep%20it%20short." target="_blank" rel="noopener">Perplexity ↗</a>
+      <button class="tag-link" type="button" data-copy-prompt={JSON.stringify(PROMPT)}>Copy prompt</button>
+      <span class="ask-ai-note dim">Each one reads <a href="/llms.txt">llms.txt</a>, the plain-text version of this page.</span>
     </div>
 
     <hr class="hr-dashed" />
@@ -155,4 +166,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <a class="tag-link" href="https://www.linkedin.com/in/filippodeluca" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('[data-copy-prompt]').forEach((b) => {
+      b.addEventListener('click', async () => {
+        const label = b.textContent;
+        try {
+          await navigator.clipboard.writeText(b.dataset.copyPrompt ?? '');
+          b.textContent = 'Copied';
+        } catch {
+          b.textContent = 'Copy failed';
+        }
+        setTimeout(() => { b.textContent = label; }, 1500);
+      });
+    });
+  </script>
 </BaseLayout>

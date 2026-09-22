@@ -1,0 +1,75 @@
+# Filippo De Luca — résumé (plain text, for LLMs and people alike)
+
+Freelance Software Engineer · Event-Driven & Distributed Systems.
+Based in Rome, Italy; works remotely. Writing software professionally since 1996; for the last decade almost only event-driven backends in Scala: Apache Kafka, Cats Effect, AWS.
+Available for contract and freelance work: backend, event-driven and distributed systems.
+
+Trained as a perito meccanico (mechanical technician) before software. That background shapes how he thinks about systems: tolerances, failure modes, and the difference between something that works on the bench and something that survives contact with production.
+
+## Links
+
+- Website: https://filippodeluca.com
+- Email: me@filippodeluca.com
+- GitHub: https://github.com/filosganga
+- LinkedIn: https://www.linkedin.com/in/filippodeluca
+- Blog feed: https://filippodeluca.com/rss.xml
+
+## Experience
+
+### Technical Lead (contract) — SiriusXM (Jul 2023 – present, remote)
+Device identity and authentication service for SiriusXM's device fleet. Leads a team of five (four direct reports); owns design and delivery of the platform.
+- Fleet of close to a billion devices. Most don't call the service yet; it already peaks at 7.5 million requests every two hours, around 1.5k requests per second at the top of the curve.
+- Load-tested at 40k requests per second: p95 latency under 100 ms for most of the run and never above 400 ms.
+- Runs active in three AWS regions on DynamoDB global tables and Kinesis; steady-state latency in the low tens of milliseconds. Non-blocking Scala on Cats Effect, so throughput is not tied to thread count.
+- Designed and launched the new authentication stack; no major customer-facing outage since.
+- Absorbed an unplanned upstream traffic spike of over fifty times normal load without dropping requests, with latency that stayed workable.
+- Three years of features shipped without a single breaking change to the API.
+- Stack: Scala, Cats Effect, AWS (Lambda, DynamoDB, Kinesis, CDK).
+
+### Technical Lead — Kaluza, OVO Group (Sep 2019 – Jun 2023, remote)
+Foundation platform area.
+- Led the platform's external interfaces: GraphQL over Kafka, event webhooks and data analytics. Ingested heterogeneous Kafka topics into DynamoDB and BigQuery while keeping Avro compatibility; customised ingestion via Avro schema enrichment and JSONPath-like expressions.
+- Main contributor to the shared libraries the business ran on: a state machine over Kafka topics (co-authored), a DynamoDB-based message deduplication library, non-blocking Scala S3 and DynamoDB clients, and a DSL to build and compose Kafka serializers.
+- Led the internal Kafka community, mentoring teams on Kafka adoption and shaping the company's data strategy.
+- Stack: Scala, cats, fs2, Kafka, http4s, DynamoDB, Akka, BigQuery, GraphQL.
+
+### Principal Software Engineer — OVO Energy (Nov 2016 – Aug 2019, London)
+- Built the multi-channel customer communication platform (email, SMS, print): one template format and one API, so product teams reach each customer on their preferred channel and ship messaging faster.
+- Helped other teams adopt event sourcing on Kafka; raised the department's public profile by publishing open-source software; mentored on deployment automation.
+- Stack: Scala, Typelevel, Kafka, DynamoDB, Akka.
+
+### Senior Software Engineer — QuanTemplate (Jun 2015 – Nov 2016, London)
+- Reactive distributed document store on the CQRS pattern with Akka; continuously deployed with GoCD, Ansible and Docker.
+
+### Senior Software Engineer — Expedia Group (Feb 2013 – May 2015, London)
+- Automated and optimised SEM bidding across AdWords and Bing: Akka, Scala, Kafka, Cassandra, Play, Hadoop.
+- Earlier, Hotels.com core services: low-level APIs for geo search, autocomplete and event handling (Spring, Lucene, Camel, Kafka).
+
+### Senior Developer — Moreover Technologies (Oct 2011 – Jan 2013, London)
+- REST backend for Newsdesk, consumed by the mobile app and a rebuilt GWT front end.
+
+### Developer — WURFL-Pro (Feb 2008 – Sep 2010, Rome)
+- Developed and maintained the open-source WURFL API 1.0.x series and the WNG and WALL mobile web libraries.
+- Built CNN's Beijing 2008 mobile site and first drafts of BNL mobile banking and the MedlinePlus mobile app.
+
+### Developer and sysadmin — Circolo Canottieri Roma (2000 – 2011, part-time, Rome)
+- Linux and Windows servers; a Java Swing and EJB management system bridged to legacy COBOL; attendance system.
+
+## Open source
+
+- kafka-serialization — composable Kafka serializers and deserializers for Scala. https://github.com/filosganga/kafka-serialization
+- mnemosyne — deduplication for at-least-once systems on DynamoDB; duplicates get back what the first attempt produced. https://github.com/filosganga/mnemosyne
+- jsonpath — JSONPath for Scala with composable expressions; cross-built for JVM, Scala.js and Native. https://github.com/filosganga/jsonpath
+- batcher — batches similar requests together without the caller knowing. https://github.com/filosganga/batcher
+
+## Writing
+
+Blog at https://filippodeluca.com/blog/ on Kafka topic layout and ordering, type classes, Avro and the Schema Registry, and distributed-systems trade-offs. New post roughly every two weeks.
+
+## Education
+
+Diploma di perito meccanico (mechanical technician), Italy.
+
+## Outside work
+
+Competitive RC car racing, scale modeling and airbrushing, stand-up paddleboarding, freediving, motorsport history.
